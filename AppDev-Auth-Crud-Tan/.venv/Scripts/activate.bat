@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\unica\Desktop\Application-Development-and-Emerging-Technologies\AppDev-Auth-Crud-Tan\.venv
+set VIRTUAL_ENV=C:\Users\Dell\Desktop\Application-Development-and-Emerging-Technologies\AppDev-Auth-Crud-Tan\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
