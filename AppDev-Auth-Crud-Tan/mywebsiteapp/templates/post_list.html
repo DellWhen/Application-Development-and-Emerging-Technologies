@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+
+  
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} text-center" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if user.is_authenticated %}
+    <h2 class="mb-4">Welcome, {{ user.username }}!</h2>
+  {% else %}
+    <h2 class="mb-4">Welcome to the Blog!</h2>
+  {% endif %}
+
+  <h2 class="mb-4">Blog Posts</h2>
+  <a href="{% url 'create_post' %}" class="btn btn-success mb-4">Create New Post</a>
+
+  {% if posts %}
+    <div class="row">
+      {% for post in posts %}
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                <a href="{% url 'post_detail' post.pk %}" class="text-decoration-none text-dark">{{ post.title }}</a>
+              </h5>
+              <p class="card-text text-muted">
+                by <strong>{{ post.author }}</strong> on {{ post.created_at|date:"F d, Y" }}
+              </p>
+              <a href="{% url 'post_detail' post.pk %}" class="btn btn-primary btn-sm">Read More</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-muted">No posts available.</p>
+  {% endif %}
+</div>
+{% endblock %}

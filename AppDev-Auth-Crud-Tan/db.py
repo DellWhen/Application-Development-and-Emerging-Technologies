@@ -10,6 +10,6 @@ database = mysql.connector.connect(
 cursorObject = database.cursor()
 
 # create a database
-cursorObject.execute("CREATE DATABASE db_project")
+cursorObject.execute("CREATE DATABASE db_blog")
 
 print("Done creating the database.")
